@@ -1,13 +1,29 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function animacion() {
     let textoAnimacion = [
-        ["B", "r", "a", "u", "l", "i", "o", " "],
-        ["a", " ", "D", "e", "v", "e", "l", "o", "p", "e", "r"]
+        ['E','s','t','a','t','u','r','a',':',' ','1','7','2',' ','c','m','.',' '],
+        ['P','e','s','o',':',' ','7','7','k','g','.']
     ];
 
     let letraContador = -1;
     let posicionArray = 0;
 
-    const contenedorAnimacion = document.querySelector(".contenedor__texto__animacion");
+    const contenedorAnimacion = document.querySelector(".characterData");
 
     function pintarTexto() {
         letraContador++;
