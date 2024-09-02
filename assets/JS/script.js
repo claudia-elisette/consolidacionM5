@@ -43,20 +43,22 @@ function injectCard(character){
         </div>
     `
 
-    if(id < 6){
+    if(id < 6 && !writting){
         document.getElementById(`container1`).innerHTML += cardHTML
     }
-    if(id>5 && id<11){
+    if(id>5 && id<11 && !writting){
         document.getElementById(`container2`).innerHTML += cardHTML
     }
-    if(id>10){
+    if(id>10 && !writting){
         document.getElementById(`container3`).innerHTML += cardHTML
     }
     
 
     console.log(cardHTML)
 
-    animacion(textoAnimacion, id)
+    if (!writting){ //injectar data si la bandera está apagada
+        animacion(textoAnimacion, id)
+    }
 }
 
 //escuchar evento mouse
@@ -65,8 +67,9 @@ function injectCard(character){
 let myItem1 = document.getElementById("item1")
 
 myItem1.addEventListener("mouseenter", function(){
-    gen1.next()
-    console.log("hecho")
+    if(!writting){
+        gen1.next() //injectar siguiente personaje si la bandera está apagada (si terminó de escribir texto)
+    }
 })
 
 function* generador1(){
@@ -84,8 +87,9 @@ gen1 = generador1()
 let myItem2 = document.getElementById("item2")
 
 myItem2.addEventListener("mouseenter", function(){
-    gen2.next()
-    console.log("hecho")
+    if(!writting){
+        gen2.next()
+    }
 })
 
 function* generador2(){
@@ -103,8 +107,9 @@ gen2 = generador2()
 let myItem3 = document.getElementById("item3")
 
 myItem3.addEventListener("mouseenter", function(){
-    gen3.next()
-    console.log("hecho")
+    if(!writting){
+        gen3.next()
+    }
 })
 
 function* generador3(){
@@ -121,6 +126,7 @@ gen3 = generador3()
 
 //Animación info
 
+let writting = false //bandera escribiendo
 function animacion(texto, id) {
     let textoAnimacion = texto
     console.log(textoAnimacion)
@@ -138,13 +144,14 @@ function animacion(texto, id) {
             clearInterval(intervalo);
 
             setTimeout(() => {
-
+                writting = true //prender bandera
                 letraContador = -1
                 posicionArray++;
                 intervalo = setInterval(pintarTexto, 50);
 
                 if(posicionArray > textoAnimacion.length - 1){
                     clearInterval(intervalo);
+                    writting = false //apagar bandera
                 }
             }, 100);
         }

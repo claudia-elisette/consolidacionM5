@@ -114,11 +114,11 @@ header h1{
 .characterBubble::after{
     content: '';
     position: absolute;  
-    top: 77px;
+    top: 74px;
     border-width: 10px;
     border-style: solid;
     border-color:transparent rgb(222, 223, 223) transparent transparent ;
-    transform: rotate(120deg);
+    transform: rotate(130deg);
 }
 .characterName{
     font-weight: 500;
